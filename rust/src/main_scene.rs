@@ -1,5 +1,6 @@
 // use crate::mob;
 // use crate::player;
+use crate::hud::HUD;
 use crate::player::PlayerArea2D;
 use crate::mob::MobRigidBody2D;
 
@@ -43,6 +44,11 @@ impl Main {
 
         player.bind_mut().start(start_pos.get_position());
         self.base().get_node_as::<Timer>("StartTimer").start();
+
+        let mut my_hud = self.base().get_node_as::<HUD>("HUD");
+        let mut my_hud = my_hud.bind_mut();
+        my_hud.update_score(self.score.into());
+        my_hud.show_message("Get Ready!".into());
     }
 
     #[func]
