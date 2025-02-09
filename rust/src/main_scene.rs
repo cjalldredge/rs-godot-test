@@ -20,6 +20,7 @@ pub struct Main {
 
     mob_scene: Gd<PackedScene>,
 
+    #[export]
     score: i32,
 }
 
@@ -36,6 +37,7 @@ impl Main {
 
     #[func]
     fn new_game(&mut self) {
+        godot_print!("New game started.");
         let mut player = self.base().get_node_as::<PlayerArea2D>("Player");
         let start_pos = self.base().get_node_as::<Marker2D>("StartPosition");
 
@@ -95,6 +97,7 @@ impl INode for Main {
     fn on_notification(&mut self, _what: NodeNotification) {}
 
     fn init(base: Base<Node>) -> Self {
+        godot_print!("Initializing main scene...");
         Self {
             base,
             mob_scene: PackedScene::new_gd(),
@@ -104,6 +107,7 @@ impl INode for Main {
 
     fn ready(&mut self) {
         self.mob_scene = load("res://mob_scene.tscn");
+        godot_print!("Starting new game...");
         self.new_game();
     }
 }
