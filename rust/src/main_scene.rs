@@ -1,4 +1,4 @@
-use crate::mob;
+// use crate::mob;
 // use crate::player;
 use crate::player::PlayerArea2D;
 use crate::mob::MobRigidBody2D;
@@ -82,7 +82,7 @@ impl Main {
         let mut mob = mob_scene.cast::<MobRigidBody2D>();
         let range = {
             // Local scope to bind 'mob' user object
-            let mob = mob.bind();
+            let _mob = mob.bind();
             rng.random_range(150.0..250.0)
         };
 
