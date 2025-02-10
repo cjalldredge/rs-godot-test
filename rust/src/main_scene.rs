@@ -34,6 +34,10 @@ impl Main {
 
         score_timer.stop();
         mob_timer.stop();
+
+        let mut hud = self.base().get_node_as::<HUD>("HUD");
+        let mut hud = hud.bind_mut();
+        hud.show_game_over();
     }
 
     #[func]
@@ -54,6 +58,9 @@ impl Main {
     #[func]
     fn on_score_timer_timeout(&mut self) {
         self.score += 1;
+        let mut hud = self.base_mut().get_node_as::<HUD>("HUD");
+        let mut hud = hud.bind_mut();
+        hud.update_score(self.score.into());
     }
 
     #[func]
@@ -114,6 +121,6 @@ impl INode for Main {
     fn ready(&mut self) {
         self.mob_scene = load("res://mob_scene.tscn");
         godot_print!("Starting new game...");
-        self.new_game();
+        // self.new_game();
     }
 }

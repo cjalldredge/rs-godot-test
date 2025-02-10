@@ -39,7 +39,7 @@ impl HUD {
     
     #[func]
     fn on_start_button_pressed(&mut self) {
-        let mut button = self.base().get_node_as::<Button>("StartButton");
+        let mut button = self.base().get_node_as::<Button>("Button");
         button.hide();
 
         self.base_mut().emit_signal("start_game", &[]);
@@ -47,7 +47,7 @@ impl HUD {
 
     #[func]
     fn on_timer_timeout(&self) {
-        let mut message_label = self.base().get_node_as::<Label>("MessageLabel");
+        let mut message_label = self.base().get_node_as::<Label>("Message");
         message_label.hide();
     }
 }

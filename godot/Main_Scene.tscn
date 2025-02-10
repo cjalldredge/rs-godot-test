@@ -34,6 +34,8 @@ rotation = -0.00209643
 
 [node name="HUD" parent="." instance=ExtResource("2_5hqfl")]
 
+[connection signal="body_entered" from="Player" to="Player" method="on_player_body_entered"]
+[connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="on_start_timer_timeout"]
